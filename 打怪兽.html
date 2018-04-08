@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>大怪兽</title>
+		<style type="text/css">
+			#box{
+				width: 500px;
+				height: 300px;
+				border: 1px red solid;
+				margin: 100px auto;
+			}
+			#blood{
+				float: left;
+				width: 200px;
+				height: 40px;
+				border: 1px black solid;
+				margin: 30px 0px 0px 150px;
+			}
+			#blood div{
+				height: 40px;
+				background-color: gray;
+				transition: 0.5s;
+			}
+			#number{
+				float: left;
+				margin: 30px 0px 0px 20px;
+			}
+			#at, #cy{
+				width: 50px;
+				height: 30px;
+				color: white;
+				line-height: 30px;
+				text-align: center;
+				background-color: green;
+				margin: 100px 0px 0px 100px
+			}
+
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div id="blood">
+				<div id="bloodbg"></div>
+			</div>
+			<div id="number">100</div>
+			<div id="at">攻击</div>
+			<div id="cy">吃药</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var at = document.getElementById('at');
+		var cy = document.getElementById('cy');
+		var number = document.getElementById('number');
+		var bloodbg = document.getElementById('bloodbg');
+		// 点击攻击
+		at.onclick = function(){
+			//数值变化、血量减少，可能颜色，
+			var num = number.innerHTML - 10;
+			if (num < 0) {
+				num = 0;
+			}
+
+			number.innerHTML = num;
+			bloodbg.style.width = (num * 2) + "px";
+
+			if (num <= 20) {
+				bloodbg.style.backgroundColor = "red";
+			} else if (num > 20 && num <= 40) {
+				bloodbg.style.backgroundColor = "yellow";
+			} else if (num > 40 && num < 100) {
+				bloodbg.style.backgroundColor = "green";
+			} else {
+				bloodbg.style.backgroundColor = "gray";
+			}
+
+		}
+		// 点击吃药
+		// 血量增加，可能颜色，数值变化
+		cy.onclick = function(){
+			//数值变化、血量减少，可能颜色，
+			var num = Number(number.innerHTML) + 10;
+			if (num > 100) {
+				num = 100;
+			}
+			number.innerHTML = num;
+			bloodbg.style.width = (num * 2) + "px";
+			if (num <= 20) {
+				bloodbg.style.backgroundColor = "red";
+			} else if (num > 20 && num <= 40) {
+				bloodbg.style.backgroundColor = "yellow";
+			} else if (num > 40 && num < 100) {
+				bloodbg.style.backgroundColor = "green";
+			} else {
+				bloodbg.style.backgroundColor = "gray";
+			}
+		}
+
+
+
+
+	</script>
+</html>
